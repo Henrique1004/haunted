@@ -6,8 +6,7 @@ public class AmbienteUltraEscuro : MonoBehaviour
     public Color corFundo = Color.black;
     public float intensidadeLuzAmbiente = 0.01f; // Quase zero!
     
-    void Start()
-    {
+    void Start(){
         ConfigurarEscuridaoTotal();
     }
     
@@ -23,7 +22,7 @@ public class AmbienteUltraEscuro : MonoBehaviour
         
         // Remove completamente o skybox
         RenderSettings.skybox = null;
-        // Desliga ou reduz drasticamente TODAS as luzes da cena
+        // Desliga e reduz drasticamente TODAS as luzes da cena
         Light[] todasAsLuzes = FindObjectsOfType<Light>();
 
         foreach (Light luz in todasAsLuzes)

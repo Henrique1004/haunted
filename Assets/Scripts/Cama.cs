@@ -25,27 +25,12 @@ public class Cama : MonoBehaviour
         }
     }
     
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)// Player entra no Trigger
     {
         if (other.CompareTag("Player"))
         {
             jogador = other.gameObject;
             jogadorPerto = true;
-            
-            // Mostra mensagem apropriada
-            if (GameManager.instance != null && GameManager.instance.PodeVoltarParaCama())
-            {
-                Debug.Log("Pressione E para voltar para a tela inicial");
-            }
-        }
-    }
-    
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            jogadorPerto = false;
-            jogador = null;
         }
     }
     
@@ -56,13 +41,16 @@ public class Cama : MonoBehaviour
         {
             if (GameManager.instance.PodeVoltarParaCama())
             {
-                Debug.Log("Voltando para a tela inicial...");
                 GameManager.instance.VoltarParaCama();
             }
-            else
-            {
-                Debug.Log("Você precisa coletar todos os itens primeiro!");
-            }
+        }
+    }
+    void OnTriggerExit(Collider other)// Player sai do Trigger
+    {
+        if (other.CompareTag("Player"))
+        {
+            jogadorPerto = false;
+            jogador = null;
         }
     }
     

@@ -31,12 +31,12 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        AtualizarUI();
+        AtualizarUI();// Atualiza o TextMesh 
         if (textoMissao != null)
             textoMissao.text = "Colete todos os itens";
     }
     
-    public void ColetarItem()
+    public void ColetarItem()// Contagem de itens coletados
     {
         itensColetados++;
         AtualizarUI();
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    void AtualizarUI()
+    void AtualizarUI()// Atualizador de contagem
     {
         if (textoContador != null)
         {
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    void TodosItensColetados()
+    void TodosItensColetados()// Aviso de todos os itens coletados
     {
         todosItensColetados = true;
         if (textoMissao != null)
@@ -63,16 +63,28 @@ public class GameManager : MonoBehaviour
             textoMissao.text = "Volte a cama para passar a noite";
             textoMissao.color = Color.green;
         }
-        Debug.Log("Todos os itens coletados! Volte para a cama.");
     }
     
-    public void VoltarParaCama()
+    public void VoltarParaCama()// Voltar ao menu principal
     {
+        AtivarCursorMenu();
         SceneManager.LoadScene("Start");
     }
     
-    public bool PodeVoltarParaCama()
+    public bool PodeVoltarParaCama()// verificação se ja pode voltar para a cama
     {
         return todosItensColetados;
+    }
+
+    public static void AtivarCursorJogo()//Ativar o mouse
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public static void AtivarCursorMenu()// Desativar o mouse
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

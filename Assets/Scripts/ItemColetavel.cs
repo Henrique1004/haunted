@@ -25,17 +25,16 @@ public class ItemColetavel : MonoBehaviour
         }
     }
     
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)// Chega perto do item para coletar
     {
         if (other.CompareTag("Player"))
         {
             jogador = other.gameObject;
             jogadorPerto = true;
-            Debug.Log("Pressione E para coletar");
         }
     }
     
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)// Sai de perto do item para coletar
     {
         if (other.CompareTag("Player"))
         {
@@ -44,7 +43,7 @@ public class ItemColetavel : MonoBehaviour
         }
     }
     
-    void ColetarItem()
+    void ColetarItem()// Para coletar os itens
     {
         // Usa o Singleton do GameManager
         if (GameManager.instance != null)

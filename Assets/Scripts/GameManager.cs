@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [Header("Configurações UI - TextMeshPro")]
     public TextMeshProUGUI textoContador;
     public TextMeshProUGUI textoMissao;
-
     public GameObject textoDaTela;
 
     [Header("Timer")]
@@ -24,7 +23,13 @@ public class GameManager : MonoBehaviour
     private int itensColetados = 0;
     private bool todosItensColetados = false;
 
-    
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -113,7 +118,6 @@ public class GameManager : MonoBehaviour
                 textoDaTela.SetActive(true); // Mostra o aviso Game Over
             }
 
-            // Inicia a pausa e troca de cena
             StartCoroutine(PausarAntesDeVoltar());
         }
     }
